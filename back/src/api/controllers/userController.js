@@ -1,7 +1,6 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { updateOne } = require("../models/userModel");
 
 exports.userRegister = (req, res) => {
   bcrypt
@@ -65,9 +64,19 @@ exports.loginRegister = (req, res) => {
 };
 
 exports.roleUser = (req, res) => {
-  User.updateOne({ email: req.body.email })
-    .then()
-    .catch((error) => res.status(401).json({ error }));
+  User.findByIdAndUpdate(req.params.user_id, { new: true })
+    .then((user) => {
+      user.role = req.body.role;
+      user
+        .save()
+        .then(() => res.status(201).json({ message: "Utilisateur modifié !" }))
+        .catch((error) =>
+          res.status(400).json({ message: "La modification a échoué" })
+        );
+    })
+    .catch((error) =>
+      res.status(401).json({ message: "Modification impossible" })
+    );
 };
 
 // Used for Debug
