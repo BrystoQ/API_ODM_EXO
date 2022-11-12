@@ -1,7 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
-
-export default class newPost extends Component {
+import "./NewPost.css";
+export default class NewPost extends Component {
   constructor(props) {
     super(props);
     this.state = { title: "", content: "" };
@@ -13,38 +13,43 @@ export default class newPost extends Component {
     const target = event.target;
     const name = target.name;
     const value = target.value;
+
     this.setState({
       [name]: value,
     });
   };
 
   handleSubmit = (event) => {
-    this.newPost();
-    event.preventDefault();
-  };
-
-  newPost = () => {
     if (!this.state.title || !this.state.content) {
       throw new Error("Title and content cannot be empty");
-    }
-    const body = {
-      title: this.state.title,
-      content: this.state.content,
-    };
+    } else {
+      const body = {
+        title: this.state.title,
+        content: this.state.content,
+      };
 
-    axios
-      .post("http://localhost:3000/posts", body)
-      .then((res) => this.setState({ reponse: true, status: res.status }))
-      .catch((error) => console.log());
+      axios
+        .post("http://localhost:3000/posts", body)
+        .then((res) =>
+          this.setState({
+            reponse: true,
+            status: res.status,
+            message: "Post created!",
+          })
+        )
+        .catch((error) => console.log());
+    }
+    event.preventDefault();
   };
 
   render = () => {
     return (
       <>
         <h1>New post</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>title</label>
           <input
+            className="title"
             type="text"
             name="text"
             placeholder="text"
@@ -54,6 +59,7 @@ export default class newPost extends Component {
           />
           <label>Content</label>
           <input
+            className="content"
             type="text"
             name="content"
             placeholder="Content"

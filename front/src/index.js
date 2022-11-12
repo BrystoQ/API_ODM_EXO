@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { App } from "./App";
 import { Footer } from "./components/footer";
-import Error from "./pages/404.js";
 import { Navbar } from "./components/navbar";
-import "./index.css";
+import Error from "./pages/404.js";
 import Login from "./pages/Login";
 import Posts from "./pages/Posts";
 import Register from "./pages/Register";
+import NewPost from "./pages/NewPost";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
       { path: "/posts", element: <Posts /> },
-      { path: "/newPost", element: <newPost /> },
+      { path: "/newPost", element: <NewPost /> },
     ],
   },
 ]);

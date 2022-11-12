@@ -16,7 +16,7 @@ const decodeJwt = () => {
 export const Navbar = () => {
   return (
     <Router>
-      <div id="sidebar">
+      <div className="navbar">
         <a href={`/`}>
           <h1>API ODM Exo</h1>
         </a>
