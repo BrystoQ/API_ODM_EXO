@@ -1,0 +1,18 @@
+.post {
+  background: red;
+  margin:10px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+h3 {
+  color: white;
+  width: 10%
+}
+
+p {
+  margin:20px;
+  color: #c9d1d9;
+  width: 85%;
+}
