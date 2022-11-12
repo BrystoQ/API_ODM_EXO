@@ -1,4 +1,4 @@
-import { Component, Navigate } from "react";
+import { Component } from "react";
 import axios from "axios";
 import "./Register.js";
 
@@ -33,20 +33,19 @@ export default class Register extends Component {
       };
 
       axios
-        .post("http://localhost:3000/users/register", body)
+        .post("http://localhost:3000/user/register", body)
         .then((res) => this.setState({ message: res.data.message }))
         .catch((error) => this.setState({ message: error }));
     } else {
       throw new Error("Passwords not correspond");
     }
-    return <Navigate to={`/`} />;
   };
 
   render = () => {
     return (
       <>
         <h1>SignIn</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label>Email</label>
             <input
@@ -84,9 +83,7 @@ export default class Register extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type={"submit"} value="Register">
-            <span>Register</span>
-          </button>
+          <input type={"submit"} value={"Create account"} />
         </form>
       </>
     );
