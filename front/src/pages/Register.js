@@ -66,7 +66,7 @@ export default class Register extends Component {
               title="Password min 8 characters. At least one UPPERCASE and one lowercase letter"
               value={this.state.password}
               required
-              // pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+              pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
               onChange={this.handleChange}
             />
           </div>
@@ -79,7 +79,7 @@ export default class Register extends Component {
               title="Password min 8 characters. At least one UPPERCASE and one lowercase letter"
               value={this.state.confirmPassword}
               required
-              // pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+              pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
               onChange={this.handleChange}
             />
           </div>
