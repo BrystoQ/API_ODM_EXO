@@ -1,16 +1,15 @@
-#sidebar {
+.navbar {
   display:flex;
   justify-content: center;
   background: #161b22;
   color:#c9d1d9;
-  list-style: none;
 }
 
-#sidebar a {
+.navbar a {
   text-decoration: none;
   color: #c9d1d9
 }
 
-#sidebar title {
+.navbar title {
   color: #c9d1d9
 }
