@@ -4,7 +4,13 @@ import "./NewPost.css";
 export default class NewPost extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", content: "" };
+    this.state = {
+      title: "",
+      content: "",
+      message: "",
+      response: false,
+    };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,12 +33,12 @@ export default class NewPost extends Component {
         title: this.state.title,
         content: this.state.content,
       };
+      console.log(body);
 
       axios
         .post("http://localhost:3000/posts", body)
         .then((res) =>
           this.setState({
-            reponse: true,
             status: res.status,
             message: "Post created!",
           })
@@ -50,26 +56,22 @@ export default class NewPost extends Component {
           <label>title</label>
           <input
             className="title"
-            type="text"
-            name="text"
-            placeholder="text"
-            value={this.state.text}
+            name={"title"}
+            placeholder={"title"}
+            value={this.state.title}
             required
             onChange={this.handleChange}
           />
           <label>Content</label>
           <input
             className="content"
-            type="text"
-            name="content"
-            placeholder="Content"
+            name={"content"}
+            placeholder={"Content"}
             value={this.state.content}
             required
             onChange={this.handleChange}
           />
-          <button type={"submit"} value="New Post">
-            <span>New Post</span>
-          </button>
+          <input type={"submit"} value={"New Post!"} />
         </form>
       </>
     );

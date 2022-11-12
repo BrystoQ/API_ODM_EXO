@@ -39,7 +39,7 @@ export default class Posts extends Component {
         {this.state.data.length > 0 ? (
           this.state.data.map((key) =>
             key.map((object) => (
-              <div class="post" key={object._id}>
+              <div className="post" key={object._id}>
                 <h3>{object.title}</h3>
                 <p>{object.content}</p>
               </div>

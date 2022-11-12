@@ -5,7 +5,7 @@ import "./Register.js";
 export default class Register extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "", confirmPassword: "" };
+    this.state = { email: "", password: "", confirmPassword: "", message: "" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -51,7 +51,7 @@ export default class Register extends Component {
             <label>Email</label>
             <input
               type="email"
-              name="email"
+              name={"email"}
               placeholder="Email address"
               value={this.state.email}
               required
@@ -62,7 +62,7 @@ export default class Register extends Component {
             <label>Password</label>
             <input
               type="password"
-              name="password"
+              name={"password"}
               placeholder="Password"
               title="Password min 8 characters. At least one UPPERCASE and one lowercase letter"
               value={this.state.password}
@@ -75,7 +75,7 @@ export default class Register extends Component {
             <label>Confirm Password</label>
             <input
               type="password"
-              name="confirmPassword"
+              name={"confirmPassword"}
               placeholder="Confirm Password"
               title="Password min 8 characters. At least one UPPERCASE and one lowercase letter"
               value={this.state.confirmPassword}
