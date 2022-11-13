@@ -4,7 +4,7 @@ import axios from "axios";
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "", confirmPassword: "", success: "" };
+    this.state = { email: "", password: "", message: "" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -32,7 +32,7 @@ export default class Login extends Component {
     };
 
     axios
-      .post("http://localhost:3000/user/register", body)
+      .post("http://localhost:3000/user/login", body)
       .then((res) => this.setState({ message: res.data.message }))
       .catch((error) => this.setState({ message: error }));
   };
@@ -41,11 +41,11 @@ export default class Login extends Component {
     return (
       <>
         <h1>SignIn</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>Email</label>
           <input
             type="email"
-            name="email"
+            name={"email"}
             placeholder="Email address"
             value={this.state.email}
             required
@@ -54,12 +54,12 @@ export default class Login extends Component {
           <label>Password</label>
           <input
             type="password"
-            name="password"
+            name={"password"}
             placeholder="Password"
             title="Password min 8 characters. At least one UPPERCASE and one lowercase letter"
             value={this.state.password}
             required
-            // pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+            pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
             onChange={this.handleChange}
           />
           <button type={"submit"} value="Sign Up">
